@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Getting the list of changes blocks in a VDI - Citrix XenServer Changed Block Tracking Guide</title>
+     
+    <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png"> 
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link rel="stylesheet" href="../css/override.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" /> 
+    <script>
+      // Current page data
+      var mkdocs_page_name = "Getting the list of changes blocks in a VDI";
+      var mkdocs_page_input_path = "list-changed-blocks.md";
+      var mkdocs_page_url = "/list-changed-blocks/";
+
+    </script>
+    
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/highlight.pack.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/custom.js"></script>  
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+    <div class="header-top">
+
+        <div class="header-top-left">
+          <a href="http://developer-docs.citrix.com" class="logo-position"><img height="60" src="../img/citrixlogoblack.png" target="_blank" class="logo-citrix"><span style="color:#000;font-size: 20px;position: relative;top:4px;left:20px;">Developer Documentation</span></a>
+        </div>
+        <div class="header-top-right">
+          <ul>
+
+            <form id="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+             <ul class="header-elements">
+              <li class="list-inline support">
+                <input name="q" id="txtName" type="text" placeholder="Search SDKs" class="searchdocs">
+                <a class="fa fa-search errspan"></a>
+<!---
+              </li>
+             <li> <a href="javascript:void(0);" style="font-size: 22px;position: relative;left: -10px;top: 3px"><i class="fa fa-globe"></i></a></li>
+             </ul>
+             --->
+            </form>
+
+          </ul>
+
+        </div>
+
+    </div>
+    <div class="body">
+      <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+          <div class="wy-side-nav-search">
+            <div role="search">
+  <form id ="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+	<i class="fa fa-search"></i>
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+          </div>
+
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul class="current">
+              
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="..">Introduction</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../getting-started/">Getting Started</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../enabling-nbd/">Enabling NBD connection</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../using-with-vdi/">Using CBT with a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../deleting-snapshot/">Deleting VDI snapshots</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 current">
+        <a class="toctree-l1-a current" href="./">Getting the list of changes blocks in a VDI</a>
+		
+            <ul style="margin-left: 0px;padding-left:15px;border-left: 1px solid #b2b2b2;">
+            
+                <li class="toctree-l3"><a href="#getting-the-list-of-blocks-that-changed-between-vdis" style="padding:0px;position: relative;">&nbsp;Getting the list of blocks that changed between VDIs</a></li>
+                
+                    <li><a class="toctree-l4" href="#examples" style="padding:0px;position: relative;">Examples</a></li>
+                
+                    <li><a class="toctree-l4" href="#errors" style="padding:0px;position: relative;">Errors</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../exporting-changed-blocks/">Exporting changed blocks over NBD</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../coalescing-blocks/">Coalescing changed blocks onto a base VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../appendices/">Appendices</a>
+		
+    </li>
+
+			  
+            </ul>
+          </div>
+          &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+           
+          <div class="wy-nav-content">
+            <div class="rst-content">
+              <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Getting the list of changes blocks in a VDI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div> -->
+              <div role="main">
+                <div class="section">
+                <div class="file-format">
+                 <div class="leftAlign" style="float: left;visibility: hidden;">
+                  </div>
+                  <div class="rightAlign" style="float: right;">
+                      <span>Download full document:</span>
+                      <ul class="file-types">
+                        <li><a style="border: 1px solid #EE3D24;padding: 5px;font-size: 11px;color: #EE3D24;border-radius: 5px;font-weight: 700">PDF</a></li>
+                        <li><a style="border: 1px solid #2A579A;padding: 5px;font-size: 11px;color: #2A579A;border-radius: 5px;font-weight: 700">DOCX</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">EMAIL</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">PRINT</a></li>
+                      </ul>
+                  </div>
+                  </div>
+                   <h1 id="getting-the-list-of-blocks-that-changed-between-vdis">Getting the list of blocks that changed between VDIs<a class="headerlink" href="#getting-the-list-of-blocks-that-changed-between-vdis" title="Permanent link">&para;</a></h1>
+<p>You can use the <code>list_changed_blocks</code> call to get a list of the blocks that have changed between two VDIs.
+Both VDI snapshots must be taken after changed block tracking is enabled on the VDI.</p>
+<p>This call takes as parameters references to two VDI snapshots:</p>
+<ul>
+<li>
+<p><code>VDI_from</code>: The earlier VDI snapshot.</p>
+</li>
+<li>
+<p><code>VDI_to</code>: The later VDI snapshot. This VDI <em>cannot</em> be attached to a VM at the time this comparison is made.</p>
+</li>
+</ul>
+<p>This operation does not require the VM associated with the VDIs to be offline at the time the comparison is made.</p>
+<p>The changed blocks are listed in a base64-encoded bitmap.
+Each bit in the bitmap indicates whether a 64 kB block in the VDI has been changed in comparison to an earlier snapshot.
+A bit set to 0 indicates that the block is the same.
+A bit set to 1 indicates that the block has changed.</p>
+<p>The bit in the first position in the bitmap represents the first block in the VDI.
+For example, if the bitmap is 01100000, this indicates that the first block has not changed, the second and third blocks have changed, and all other blocks have not changed.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>You can use any of our supported languages to get the bitmap that lists the changed blocks between two VDI snapshots.
+The following examples show how to do it in Python and at the xe command line.</p>
+<p>Python:</p>
+<div class="codehilite"><pre><span></span><span class="n">bitmap</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">VDI</span><span class="o">.</span><span class="n">list_changed_blocks</span><span class="p">(</span><span class="o">&lt;</span><span class="n">previous_snapshot_vdi_ref</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">new_snapshot_vdi_ref</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>You can convert the base64-encoded bitmap this call returns into a human-readable string of 1s and 0s:</p>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">bitstring</span> <span class="kn">import</span> <span class="n">BitStream</span>
+<span class="kn">import</span> <span class="nn">base64</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">BitStream</span><span class="p">(</span><span class="nb">bytes</span><span class="o">=</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">bitmap</span><span class="p">))</span>
+</pre></div>
+
+
+<p>xe command line:</p>
+<div class="codehilite"><pre><span></span><span class="n">xe</span> <span class="n">vdi</span><span class="o">-</span><span class="nb">list</span><span class="o">-</span><span class="n">changed</span><span class="o">-</span><span class="n">blocks</span> <span class="n">vdi</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">uuid</span><span class="o">=&lt;</span><span class="n">previous_snapshot_vdi_uuid</span><span class="o">&gt;</span> <span class="n">vdi</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">uuid</span><span class="o">=&lt;</span><span class="n">new_snapshot_vdi_uuid</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h2 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h2>
+<p>You might see the following errors when using this call:</p>
+<p><strong>VDI_MISSING</strong>:</p>
+<ul>
+<li>
+<p>The call cannot find one or both of the VDI snapshots.</p>
+<p>Check that the reference or UUID you are using to refer to the VDI snapshot is correct.
+Check that the VDI snapshot exists.</p>
+</li>
+</ul>
+<p><strong>VDI_IN_USE</strong>:</p>
+<ul>
+<li>
+<p>The VDI snapshot is currently in use by another operation.</p>
+<p>Check that the VDI snapshot is not being accessed by another client or operation.
+Check that the more recent VDI snapshot is not attached to a VM.
+The newer VDI in the comparison cannot be attached to a VM at the time of the comparison.</p>
+</li>
+</ul>
+<p><strong>Source and target VDI are unrelated</strong>:</p>
+<ul>
+<li>
+<p>The VDI snapshots are not linked by changed block metadata.</p>
+<p>You can only list changed blocks between snapshots that are taken as part of the same set of incremental backups.
+For more information, see <a href="../using-with-vdi/">Incremental backup sets</a>.</p>
+</li>
+</ul> 
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+    <!--<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span class="prev"><a href="../deleting-snapshot/"><i class="fa fa-angle-left"></i> Previous</a></span>
+      
+      
+        <span class="next"><a href="../exporting-changed-blocks/">Next <i class="fa fa-angle-right"></i></a></span>
+      
+    </span>
+	<div class="footer-right">
+		<ul class="social-links">
+			<li class="list-inline"><a href="https://twitter.com/citrix"><i class="fa fa-twitter"></i>@citrix</a></li>
+			<li class="list-inline"><a href="mailto:support@citrix.com"><i class="fa fa-envelope-o"></i>support@citrix.com</a></li>
+		</ul>
+		<ul class="inner-pages">
+			<li class="list-inline"><a href="http://citrix.com/about/legal">Privacy and Terms</li>
+		</ul>
+	</div>
+</div>-->
+
+  </body>
+
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Exporting changed blocks over NBD - Citrix XenServer Changed Block Tracking Guide</title>
+     
+    <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png"> 
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link rel="stylesheet" href="../css/override.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" /> 
+    <script>
+      // Current page data
+      var mkdocs_page_name = "Exporting changed blocks over NBD";
+      var mkdocs_page_input_path = "exporting-changed-blocks.md";
+      var mkdocs_page_url = "/exporting-changed-blocks/";
+
+    </script>
+    
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/highlight.pack.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/custom.js"></script>  
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+    <div class="header-top">
+
+        <div class="header-top-left">
+          <a href="http://developer-docs.citrix.com" class="logo-position"><img height="60" src="../img/citrixlogoblack.png" target="_blank" class="logo-citrix"><span style="color:#000;font-size: 20px;position: relative;top:4px;left:20px;">Developer Documentation</span></a>
+        </div>
+        <div class="header-top-right">
+          <ul>
+
+            <form id="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+             <ul class="header-elements">
+              <li class="list-inline support">
+                <input name="q" id="txtName" type="text" placeholder="Search SDKs" class="searchdocs">
+                <a class="fa fa-search errspan"></a>
+<!---
+              </li>
+             <li> <a href="javascript:void(0);" style="font-size: 22px;position: relative;left: -10px;top: 3px"><i class="fa fa-globe"></i></a></li>
+             </ul>
+             --->
+            </form>
+
+          </ul>
+
+        </div>
+
+    </div>
+    <div class="body">
+      <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+          <div class="wy-side-nav-search">
+            <div role="search">
+  <form id ="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+	<i class="fa fa-search"></i>
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+          </div>
+
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul class="current">
+              
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="..">Introduction</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../getting-started/">Getting Started</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../enabling-nbd/">Enabling NBD connection</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../using-with-vdi/">Using CBT with a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../deleting-snapshot/">Deleting VDI snapshots</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../list-changed-blocks/">Getting the list of changes blocks in a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 current">
+        <a class="toctree-l1-a current" href="./">Exporting changed blocks over NBD</a>
+		
+            <ul style="margin-left: 0px;padding-left:15px;border-left: 1px solid #b2b2b2;">
+            
+                <li class="toctree-l3"><a href="#export-changed-blocks-over-a-network-block-device-connection" style="padding:0px;position: relative;">&nbsp;Export changed blocks over a network block device connection</a></li>
+                
+                    <li><a class="toctree-l4" href="#getting-nbd-connection-information-for-a-vdi" style="padding:0px;position: relative;">Getting NBD connection information for a VDI</a></li>
+                
+                    <li><a class="toctree-l4" href="#exporting-the-changed-blocks-using-an-nbd-client" style="padding:0px;position: relative;">Exporting the changed blocks using an NBD client</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../coalescing-blocks/">Coalescing changed blocks onto a base VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../appendices/">Appendices</a>
+		
+    </li>
+
+			  
+            </ul>
+          </div>
+          &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+           
+          <div class="wy-nav-content">
+            <div class="rst-content">
+              <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Exporting changed blocks over NBD</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div> -->
+              <div role="main">
+                <div class="section">
+                <div class="file-format">
+                 <div class="leftAlign" style="float: left;visibility: hidden;">
+                  </div>
+                  <div class="rightAlign" style="float: right;">
+                      <span>Download full document:</span>
+                      <ul class="file-types">
+                        <li><a style="border: 1px solid #EE3D24;padding: 5px;font-size: 11px;color: #EE3D24;border-radius: 5px;font-weight: 700">PDF</a></li>
+                        <li><a style="border: 1px solid #2A579A;padding: 5px;font-size: 11px;color: #2A579A;border-radius: 5px;font-weight: 700">DOCX</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">EMAIL</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">PRINT</a></li>
+                      </ul>
+                  </div>
+                  </div>
+                   <h1 id="export-changed-blocks-over-a-network-block-device-connection">Export changed blocks over a network block device connection<a class="headerlink" href="#export-changed-blocks-over-a-network-block-device-connection" title="Permanent link">&para;</a></h1>
+<p>XenServer runs an NBD server on the host that can make VDI snapshots accessible as a network block device to NBD clients.
+The NBD server listens on port 10809 and uses the "fixed newstyle" NBD protocol.
+For more information, see <a href="https://sourceforge.net/p/nbd/code/ci/master/tree/doc/proto.md">the NBD protocol documentation</a>.</p>
+<p>NBD connections must be enabled for one or more of the XenServer networks before you can export the changed blocks over NBD.
+For more information, see <a href="../enabling-nbd/">Enabling NBD connections on XenServer</a>.</p>
+<h2 id="getting-nbd-connection-information-for-a-vdi">Getting NBD connection information for a VDI<a class="headerlink" href="#getting-nbd-connection-information-for-a-vdi" title="Permanent link">&para;</a></h2>
+<p>From a logged in XenAPI session, you can use the <code>get_nbd_info</code> call to get a list of connection details for a VDI snapshot made available as a network block device.</p>
+<p>These connection details are specific to the session that creates them and the NBD client uses this logged in session when making its connection.
+Any set of connection details in the list can be used by the NBD client when accessing the VDI snapshot.</p>
+<p>Each set of connection details in the list is provided as a dictionary containing the following information:</p>
+<p><code>address</code>:</p>
+<ul>
+<li>The IP address (IPv4 or IPv6) of the NBD server.</li>
+</ul>
+<p><code>port</code>:</p>
+<ul>
+<li>The TCP port to connect to the XenServer NBD server on.</li>
+</ul>
+<p><code>cert</code>:</p>
+<ul>
+<li>The TLS certificate used by the NBD server encoded as a string in PEM format.
+    When XenServer is configured to enable NBD connections in <code>FORCEDTLS</code> mode, the server presents this certificate during the TLS handshake and the NBD client must verify the server TLS certificate against this TLS certificate.
+    For more information, see "Verifying TLS certificates for NBD connections".</li>
+</ul>
+<p><code>exportname</code>:</p>
+<ul>
+<li>
+<p>A token that the NBD client can use to request the export of a VDI from the NBD server.
+    The NBD client provides the value of this token to the NBD server using the <code>NBD_OPT_EXPORT_NAME</code> option during the NBD option haggling phase of an NBD connection.</p>
+<p>This token contains a reference to a logged in XenAPI session.
+The XenAPI session must remain logged in for this token to continue to be valid.
+Because the token contains a reference to a XenAPI session, you must handle the token securely to prevent the session being hijacked.</p>
+<p>The format of this token is not guaranteed and might change in future releases of XenServer.
+Treat the export name as an opaque token.</p>
+</li>
+</ul>
+<p><code>subject</code>:</p>
+<ul>
+<li>A subject of the TLS certificate returned as the value of <code>cert</code>. This field is provided as a convenience.</li>
+</ul>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>You can use any of our supported languages to get the list of NBD connection details for a VDI snapshot.
+The following examples show how to do it in Python.</p>
+<p>Python:</p>
+<div class="codehilite"><pre><span></span><span class="n">connection_list</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">VDI</span><span class="o">.</span><span class="n">get_nbd_info</span><span class="p">(</span><span class="o">&lt;</span><span class="n">snapshot_vdi_ref</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>This call requires a logged in XenAPI session that remains logged in while the VDI snapshot is accessed over NBD.
+This means that this command is not available at the xe command line.</p>
+<h3 id="errors">Errors<a class="headerlink" href="#errors" title="Permanent link">&para;</a></h3>
+<p>You might see the following errors when using this call:</p>
+<p><strong>VDI_INCOMPATIBLE_TYPE</strong>:</p>
+<ul>
+<li>
+<p>The VDI is of a type that does not support being accessed as a network block device.</p>
+<p>Check that the type of the VDI is not <code>cbt_metadata</code>.
+You can use the <code>get_type</code> call to find out the type of a VDI.
+If your VDI is <code>cbt_metadata</code>, you cannot access it as a network block device. For more information, see <a href="./deleting-snapshots.md">Checking the type of a VDI or VDI snapshot</a>.</p>
+</li>
+</ul>
+<p><strong>An empty list of connection details</strong>:</p>
+<ul>
+<li>
+<p>The VDI cannot be accessed.</p>
+<p>Check that the XenServer host that runs the NBD server has a PIF with an IP address.</p>
+<p>Check that you have at least one network in your pool with the purpose <code>nbd</code> or <code>insecure_nbd</code>.
+For more information, see <a href="../enabling-nbd/">Enabling NBD connections on XenServer</a>.</p>
+<p>Check that storage repository the VDI is on is attached to a host that is connected to one of the NBD-enabled networks.</p>
+</li>
+</ul>
+<h2 id="exporting-the-changed-blocks-using-an-nbd-client">Exporting the changed blocks using an NBD client<a class="headerlink" href="#exporting-the-changed-blocks-using-an-nbd-client" title="Permanent link">&para;</a></h2>
+<p>An NBD client running in the backup location can connect to the NBD server that runs on the XenServer host and access the VDI snapshot by using the provided connection details.</p>
+<p>The NBD client that you use to connect to the XenServer NBD server can be any implementation that supports the “fixed newstyle” version of the NBD protocol.</p>
+<p>When choosing or developing an NBD client implementation, consider the following requirements:</p>
+<ul>
+<li>
+<p>The NBD client must support the “fixed newstyle” version of the NBD protocol.
+    For more information, see <a href="https://sourceforge.net/p/nbd/code/ci/master/tree/doc/proto.md">the NBD protocol documentation</a>.</p>
+</li>
+<li>
+<p>The NBD client must request an export name returned by the <code>get_nbd_info</code> call that corresponds to an existing logged in XenAPI session.
+    The client makes this request by using the <code>NBD_OPT_EXPORT_NAME</code> option during the NBD option haggling phase of the NBD connection.</p>
+</li>
+<li>
+<p>The NBD client must verify the TLS certificate presented by the NBD server by using the information returned by the <code>get_nbd_info</code> call.
+    For more information, see “Verifying TLS certificates for NBD connections”.</p>
+</li>
+</ul>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>If you are using the Linux upstream NBD client, a minimum version of 3.15 is required to support TLS.</p>
+</blockquote>
+<p>After the NBD client has made a connection to the XenServer host and accessed the VDI snapshot, you can use the bitmap provided by the <code>list_changed_blocks</code> call to select which blocks to read.
+For more information, see <a href="../list-changed-blocks/">Getting the list of blocks that changed between VDIs</a>.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>XenServer supports up to 16 concurrent NBD connections.</p>
+</blockquote>
+<h3 id="verifying-tls-certificates-for-nbd-connections">Verifying TLS certificates for NBD connections<a class="headerlink" href="#verifying-tls-certificates-for-nbd-connections" title="Permanent link">&para;</a></h3>
+<p>When connecting to the NBD server using TLS, the NBD client must verify the certificate that the server presents as part of the TLS handshake.</p>
+<p>We recommend that you use one of the following methods of verification depending on your NBD client implementation:</p>
+<ul>
+<li>
+<p>Verify that the server certificate matches the certificate returned by the <code>get_nbd_info</code> call.</p>
+</li>
+<li>
+<p>Verify that the public key of the server certificate matches the public key of the certificate returned by the <code>get_nbd_info</code> call.</p>
+</li>
+</ul>
+<h4 id="alternative-approach">Alternative approach<a class="headerlink" href="#alternative-approach" title="Permanent link">&para;</a></h4>
+<p>As a less preferred option, it is possible for the NBD client to verify the certificate that the server presents during the TLS handshake by checking that the certificate meets all of the following criteria:</p>
+<ul>
+<li>
+<p>It is signed by a trusted Certificate Authority</p>
+</li>
+<li>
+<p>It has an <code>Alternative Subject Name</code> (or, if absent, a <code>Subject</code>) that matches the subject returned by the <code>get_nbd_info</code> call.</p>
+</li>
+</ul> 
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+    <!--<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span class="prev"><a href="../list-changed-blocks/"><i class="fa fa-angle-left"></i> Previous</a></span>
+      
+      
+        <span class="next"><a href="../coalescing-blocks/">Next <i class="fa fa-angle-right"></i></a></span>
+      
+    </span>
+	<div class="footer-right">
+		<ul class="social-links">
+			<li class="list-inline"><a href="https://twitter.com/citrix"><i class="fa fa-twitter"></i>@citrix</a></li>
+			<li class="list-inline"><a href="mailto:support@citrix.com"><i class="fa fa-envelope-o"></i>support@citrix.com</a></li>
+		</ul>
+		<ul class="inner-pages">
+			<li class="list-inline"><a href="http://citrix.com/about/legal">Privacy and Terms</li>
+		</ul>
+	</div>
+</div>-->
+
+  </body>
+
+</html>
