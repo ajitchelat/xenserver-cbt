@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Enabling NBD connection - Citrix XenServer Changed Block Tracking Guide</title>
+     
+    <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png"> 
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link rel="stylesheet" href="../css/override.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" /> 
+    <script>
+      // Current page data
+      var mkdocs_page_name = "Enabling NBD connection";
+      var mkdocs_page_input_path = "enabling-nbd.md";
+      var mkdocs_page_url = "/enabling-nbd/";
+
+    </script>
+    
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/highlight.pack.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/custom.js"></script>  
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+    <div class="header-top">
+
+        <div class="header-top-left">
+          <a href="http://developer-docs.citrix.com" class="logo-position"><img height="60" src="../img/citrixlogoblack.png" target="_blank" class="logo-citrix"><span style="color:#000;font-size: 20px;position: relative;top:4px;left:20px;">Developer Documentation</span></a>
+        </div>
+        <div class="header-top-right">
+          <ul>
+
+            <form id="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+             <ul class="header-elements">
+              <li class="list-inline support">
+                <input name="q" id="txtName" type="text" placeholder="Search SDKs" class="searchdocs">
+                <a class="fa fa-search errspan"></a>
+<!---
+              </li>
+             <li> <a href="javascript:void(0);" style="font-size: 22px;position: relative;left: -10px;top: 3px"><i class="fa fa-globe"></i></a></li>
+             </ul>
+             --->
+            </form>
+
+          </ul>
+
+        </div>
+
+    </div>
+    <div class="body">
+      <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+          <div class="wy-side-nav-search">
+            <div role="search">
+  <form id ="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+	<i class="fa fa-search"></i>
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+          </div>
+
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul class="current">
+              
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="..">Introduction</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../getting-started/">Getting Started</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 current">
+        <a class="toctree-l1-a current" href="./">Enabling NBD connection</a>
+		
+            <ul style="margin-left: 0px;padding-left:15px;border-left: 1px solid #b2b2b2;">
+            
+                <li class="toctree-l3"><a href="#enabling-nbd-connections-on-xenserver" style="padding:0px;position: relative;">&nbsp;Enabling NBD connections on XenServer</a></li>
+                
+                    <li><a class="toctree-l4" href="#enabling-an-nbd-connection-for-a-network-forcedtls-mode" style="padding:0px;position: relative;">Enabling an NBD connection for a network (FORCEDTLS mode)</a></li>
+                
+                    <li><a class="toctree-l4" href="#enabling-an-insecure-nbd-connection-for-a-network-notls-mode" style="padding:0px;position: relative;">Enabling an insecure NBD connection for a network (NOTLS mode)</a></li>
+                
+                    <li><a class="toctree-l4" href="#disabling-nbd-connections-for-a-network" style="padding:0px;position: relative;">Disabling NBD connections for a network</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../using-with-vdi/">Using CBT with a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../deleting-snapshot/">Deleting VDI snapshots</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../list-changed-blocks/">Getting the list of changes blocks in a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../exporting-changed-blocks/">Exporting changed blocks over NBD</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../coalescing-blocks/">Coalescing changed blocks onto a base VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../appendices/">Appendices</a>
+		
+    </li>
+
+			  
+            </ul>
+          </div>
+          &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+           
+          <div class="wy-nav-content">
+            <div class="rst-content">
+              <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Enabling NBD connection</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div> -->
+              <div role="main">
+                <div class="section">
+                <div class="file-format">
+                 <div class="leftAlign" style="float: left;visibility: hidden;">
+                  </div>
+                  <div class="rightAlign" style="float: right;">
+                      <span>Download full document:</span>
+                      <ul class="file-types">
+                        <li><a style="border: 1px solid #EE3D24;padding: 5px;font-size: 11px;color: #EE3D24;border-radius: 5px;font-weight: 700">PDF</a></li>
+                        <li><a style="border: 1px solid #2A579A;padding: 5px;font-size: 11px;color: #2A579A;border-radius: 5px;font-weight: 700">DOCX</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">EMAIL</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">PRINT</a></li>
+                      </ul>
+                  </div>
+                  </div>
+                   <h1 id="enabling-nbd-connections-on-xenserver">Enabling NBD connections on XenServer<a class="headerlink" href="#enabling-nbd-connections-on-xenserver" title="Permanent link">&para;</a></h1>
+<p>XenServer acts as an NBD server and makes VDI snapshots available over NBD connections.
+However, to connect to XenServer over an NBD connection, you must enable NBD connections for one or more networks.</p>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>We recommend that you use a dedicated network for your NBD traffic.</p>
+</blockquote>
+<p>By default, NBD connections are not enabled on any networks.</p>
+<blockquote>
+<p><strong>Note</strong>
+Networks associated with a XenServer pool that have NBD connections enabled must either all have the <code>nbd</code> purpose or all have the <code>insecure_nbd</code> purpose. You cannot have a mix of normal NBD networks (<code>FORCEDTLS</code>) and insecure NBD networks (<code>NOTLS</code>).
+To switch the purpose of all networks, you must first disable normal NBD connections on all networks before enabling either normal or insecure NBD connections on any networks.</p>
+</blockquote>
+<h2 id="enabling-an-nbd-connection-for-a-network-forcedtls-mode">Enabling an NBD connection for a network (<code>FORCEDTLS</code> mode)<a class="headerlink" href="#enabling-an-nbd-connection-for-a-network-forcedtls-mode" title="Permanent link">&para;</a></h2>
+<p>We recommend that you use TLS in your NBD connections.
+When NBD connections with TLS are enabled, any NBD clients that attempt to connect to XenServer must use TLSv1.2.
+The NBD server runs in <code>FORCEDTLS</code> mode with the "fixed newstyle" NBD handshake.
+For more information, see the <a href="https://sourceforge.net/p/nbd/code/ci/master/tree/doc/proto.md">NBD protocol documentation</a>.</p>
+<p>To enable NBD connections with TLS, use the <code>purpose</code> parameter of the network.
+Set this parameter to include the value <code>nbd</code>.
+Ensure that you wait for the setting to propagate before attempting to use this network for NBD connections.
+The time it takes for the setting to propagate depends on your network and is at least 10 seconds.
+We recommend that you use a retry loop when making the NBD connection.</p>
+<h3 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h3>
+<p>You can use any of our supported language bindings to enable NBD connections.
+The following examples show how to do it in Python and at the xe command line.</p>
+<p>Python:</p>
+<div class="codehilite"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">add_purpose</span><span class="p">(</span><span class="o">&lt;</span><span class="n">network_ref</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;nbd&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>xe command line:</p>
+<div class="codehilite"><pre><span></span><span class="n">xe</span> <span class="n">network</span><span class="o">-</span><span class="n">param</span><span class="o">-</span><span class="n">add</span> <span class="n">param</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">purpose</span> <span class="n">param</span><span class="o">-</span><span class="n">key</span><span class="o">=</span><span class="n">nbd</span> <span class="n">uuid</span><span class="o">=&lt;</span><span class="n">network</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h2 id="enabling-an-insecure-nbd-connection-for-a-network-notls-mode">Enabling an insecure NBD connection for a network (<code>NOTLS</code> mode)<a class="headerlink" href="#enabling-an-insecure-nbd-connection-for-a-network-notls-mode" title="Permanent link">&para;</a></h2>
+<p>We recommend that you do not enable insecure NBD connections.
+Instead use <code>FORCEDTLS</code> NBD connections.
+However, the ability to connect to the XenServer over an insecure NBD connection is provided for development and testing with the NBD server operating in <code>NOTLS</code> mode as described in the NBD protocol.</p>
+<p>To enable insecure NBD connections, use the <code>purpose</code> parameter of the network.
+Set this parameter to include the value <code>insecure_nbd</code>.
+Ensure that you wait for the setting to propagate before attempting to use this network for NBD connections.
+The time it takes for the setting to propagate depends on your network and is at least 10 seconds.
+We recommend that you use a retry loop when making the NBD connection.</p>
+<h3 id="examples_1">Examples<a class="headerlink" href="#examples_1" title="Permanent link">&para;</a></h3>
+<p>You can use any of our supported language bindings to enable insecure NBD connections.
+The following examples show how to do it in Python and at the xe command line.</p>
+<p>Python:</p>
+<div class="codehilite"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">add_purpose</span><span class="p">(</span><span class="o">&lt;</span><span class="n">network_ref</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;insecure_nbd&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>xe command line:</p>
+<div class="codehilite"><pre><span></span><span class="n">xe</span> <span class="n">network</span><span class="o">-</span><span class="n">param</span><span class="o">-</span><span class="n">add</span> <span class="n">param</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">purpose</span> <span class="n">param</span><span class="o">-</span><span class="n">key</span><span class="o">=</span><span class="n">insecure_nbd</span> <span class="n">uuid</span><span class="o">=&lt;</span><span class="n">network</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<h2 id="disabling-nbd-connections-for-a-network">Disabling NBD connections for a network<a class="headerlink" href="#disabling-nbd-connections-for-a-network" title="Permanent link">&para;</a></h2>
+<p>To disable NBD connections for a network, remove the NBD values from the <code>purpose</code> parameter of the network.</p>
+<h3 id="examples_2">Examples<a class="headerlink" href="#examples_2" title="Permanent link">&para;</a></h3>
+<p>You can use any of our supported language bindings to disable NBD connections.
+The following examples show how to do it in Python and at the xe command line.</p>
+<p>Python:</p>
+<div class="codehilite"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">remove_purpose</span><span class="p">(</span><span class="o">&lt;</span><span class="n">network_ref</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;nbd&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Or, for insecure NBD connections:</p>
+<div class="codehilite"><pre><span></span><span class="n">session</span><span class="o">.</span><span class="n">xenapi</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">remove_purpose</span><span class="p">(</span><span class="o">&lt;</span><span class="n">network_ref</span><span class="o">&gt;</span><span class="p">,</span> <span class="s2">&quot;insecure_nbd&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>xe command line:</p>
+<div class="codehilite"><pre><span></span><span class="n">xe</span> <span class="n">network</span><span class="o">-</span><span class="n">param</span><span class="o">-</span><span class="n">remove</span> <span class="n">param</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">purpose</span> <span class="n">param</span><span class="o">-</span><span class="n">key</span><span class="o">=</span><span class="n">nbd</span> <span class="n">uuid</span><span class="o">=&lt;</span><span class="n">network</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span>
+</pre></div>
+
+
+<p>Or, for insecure NBD connections:</p>
+<div class="codehilite"><pre><span></span><span class="n">xe</span> <span class="n">network</span><span class="o">-</span><span class="n">param</span><span class="o">-</span><span class="n">remove</span> <span class="n">param</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="n">purpose</span> <span class="n">param</span><span class="o">-</span><span class="n">key</span><span class="o">=</span><span class="n">insecure_nbd</span> <span class="n">uuid</span><span class="o">=&lt;</span><span class="n">network</span><span class="o">-</span><span class="n">uuid</span><span class="o">&gt;</span>
+</pre></div> 
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+    <!--<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span class="prev"><a href="../getting-started/"><i class="fa fa-angle-left"></i> Previous</a></span>
+      
+      
+        <span class="next"><a href="../using-with-vdi/">Next <i class="fa fa-angle-right"></i></a></span>
+      
+    </span>
+	<div class="footer-right">
+		<ul class="social-links">
+			<li class="list-inline"><a href="https://twitter.com/citrix"><i class="fa fa-twitter"></i>@citrix</a></li>
+			<li class="list-inline"><a href="mailto:support@citrix.com"><i class="fa fa-envelope-o"></i>support@citrix.com</a></li>
+		</ul>
+		<ul class="inner-pages">
+			<li class="list-inline"><a href="http://citrix.com/about/legal">Privacy and Terms</li>
+		</ul>
+	</div>
+</div>-->
+
+  </body>
+
+</html>

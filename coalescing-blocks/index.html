@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Coalescing changed blocks onto a base VDI - Citrix XenServer Changed Block Tracking Guide</title>
+     
+    <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png"> 
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link rel="stylesheet" href="../css/override.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" /> 
+    <script>
+      // Current page data
+      var mkdocs_page_name = "Coalescing changed blocks onto a base VDI";
+      var mkdocs_page_input_path = "coalescing-blocks.md";
+      var mkdocs_page_url = "/coalescing-blocks/";
+
+    </script>
+    
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/highlight.pack.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/custom.js"></script>  
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+    <div class="header-top">
+
+        <div class="header-top-left">
+          <a href="http://developer-docs.citrix.com" class="logo-position"><img height="60" src="../img/citrixlogoblack.png" target="_blank" class="logo-citrix"><span style="color:#000;font-size: 20px;position: relative;top:4px;left:20px;">Developer Documentation</span></a>
+        </div>
+        <div class="header-top-right">
+          <ul>
+
+            <form id="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+             <ul class="header-elements">
+              <li class="list-inline support">
+                <input name="q" id="txtName" type="text" placeholder="Search SDKs" class="searchdocs">
+                <a class="fa fa-search errspan"></a>
+<!---
+              </li>
+             <li> <a href="javascript:void(0);" style="font-size: 22px;position: relative;left: -10px;top: 3px"><i class="fa fa-globe"></i></a></li>
+             </ul>
+             --->
+            </form>
+
+          </ul>
+
+        </div>
+
+    </div>
+    <div class="body">
+      <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+          <div class="wy-side-nav-search">
+            <div role="search">
+  <form id ="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+	<i class="fa fa-search"></i>
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+          </div>
+
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul class="current">
+              
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="..">Introduction</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../getting-started/">Getting Started</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../enabling-nbd/">Enabling NBD connection</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../using-with-vdi/">Using CBT with a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../deleting-snapshot/">Deleting VDI snapshots</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../list-changed-blocks/">Getting the list of changes blocks in a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../exporting-changed-blocks/">Exporting changed blocks over NBD</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 current">
+        <a class="toctree-l1-a current" href="./">Coalescing changed blocks onto a base VDI</a>
+		
+            <ul style="margin-left: 0px;padding-left:15px;border-left: 1px solid #b2b2b2;">
+            
+                <li class="toctree-l3"><a href="#coalescing-changed-blocks-onto-a-base-vdi" style="padding:0px;position: relative;">&nbsp;Coalescing changed blocks onto a base VDI</a></li>
+                
+                    <li><a class="toctree-l4" href="#examples" style="padding:0px;position: relative;">Examples</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../appendices/">Appendices</a>
+		
+    </li>
+
+			  
+            </ul>
+          </div>
+          &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+           
+          <div class="wy-nav-content">
+            <div class="rst-content">
+              <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Coalescing changed blocks onto a base VDI</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div> -->
+              <div role="main">
+                <div class="section">
+                <div class="file-format">
+                 <div class="leftAlign" style="float: left;visibility: hidden;">
+                  </div>
+                  <div class="rightAlign" style="float: right;">
+                      <span>Download full document:</span>
+                      <ul class="file-types">
+                        <li><a style="border: 1px solid #EE3D24;padding: 5px;font-size: 11px;color: #EE3D24;border-radius: 5px;font-weight: 700">PDF</a></li>
+                        <li><a style="border: 1px solid #2A579A;padding: 5px;font-size: 11px;color: #2A579A;border-radius: 5px;font-weight: 700">DOCX</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">EMAIL</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">PRINT</a></li>
+                      </ul>
+                  </div>
+                  </div>
+                   <h1 id="coalescing-changed-blocks-onto-a-base-vdi">Coalescing changed blocks onto a base VDI<a class="headerlink" href="#coalescing-changed-blocks-onto-a-base-vdi" title="Permanent link">&para;</a></h1>
+<p>When using backed up data to restore the state of a VDI, you must import a full VDI into XenServer.
+You cannot import only the sets of changed blocks.
+To import incremental backups created with changed block tracking data into XenServer, you must first use these incremental backups to create a full VDI.</p>
+<p>A set of incremental backups created with changed block tracking can be used to create a full VDI whose data is identical to the source VDI at the time an incremental backup was taken.</p>
+<p>For more information about incremental backup sets, see <a href="../using-with-vdi/">Incremental backup sets</a>.</p>
+<p>For example, you have a set of incremental backups that comprises:</p>
+<ul>
+<li>
+<p>A base snapshot that captures the data for the full VDI.</p>
+</li>
+<li>
+<p>Backup 1: The first incremental backup, which consists of a bitmap list of blocks changed since the base snapshot and the data for only those changed blocks.</p>
+</li>
+<li>
+<p>Backup 2: The second incremental backup, which consists of a bitmap  list of blocks changed since backup 1 and the data for only those changed blocks.</p>
+</li>
+</ul>
+<p><img alt="A base snapshot made of 8 blocks. A first backup that has changes in blocks 3, 6, and 7. A second backup that has changes in blocks 1, 5, 6, and 8." src="../media/history.png" /></p>
+<p>If you want to restore a VDI on XenServer to the state it was at when backup 2 was taken, you must create a VDI that takes blocks from the base snapshot, changed blocks from backup 1, and changed blocks from backup 2.
+To do this, you can apply each set of changed blocks in sequence to the base snapshot of the VDI.</p>
+<p>First build up a coalesced VDI by taking unchanged blocks from the base snapshot and changed blocks from those exported at backup 1.
+The bitmap list of changed blocks that was used to create backup 1 defines which blocks are changed.</p>
+<p>After coalescing the base snapshot with the changed blocks exported at backup 1, you have a full VDI whose data is identical to that of the source VDI at the time backup 1 was taken. Call this coalesced VDI "VDI 1".</p>
+<p><img alt="A VDI coalesced from the base and from backup 1. Blocks 1, 2, 4, 5, and 8 are from the base snapshot. The other blocks are from backup 1." src="../media/vdi1.png" /></p>
+<p>Next, use this coalesced VDI, VDI 1, to create another coalesced VDI by taking unchanged blocks from VDI 1 and changed blocks from those exported at backup 2.
+The bitmap list of changed blocks that was used to create backup 2 defines which blocks are changed.</p>
+<p>After coalescing VDI 1 with the changed blocks exported at backup 2, you have a full VDI whose data is identical to that of the source VDI at the time backup 2 was taken.
+Call this coalesced VDI "VDI 2".</p>
+<p><img alt="A VDI coalesced from the base and from backup 1 and backup 2. Blocks 2 and 4 are from the base snapshot. Blocks 3 and 7 are from backup 1. Blocks 1, 5, 6, and 8 are from backup 2." src="../media/vdi2.png" /></p>
+<p>This coalesced VDI, VDI 2, can be used to restore the state of the VDI on XenServer at the time that a snapshot was taken for backup 2.</p>
+<p>When creating a coalesced VDI, ensure that you work with your VDIs and changed blocks as binary.</p>
+<p>Ensure that you verify the integrity of the backed up and restored VDIs.
+For example, you can do this by computing the checksums of the data.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>The following example shows how to create a coalesced VDI.
+The example shows applying a single set of changed blocks to the base VDI snapshot.
+To apply multiple sets of changed blocks, you must repeat this process for each set of changed blocks in order from oldest to most recent, using the output from the  previous iteration as the base VDI for the next iteration.</p>
+<p>Python:</p>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">write_changed_blocks_to_base_VDI</span><span class="p">(</span><span class="n">vdi_path</span><span class="p">,</span> <span class="n">changed_block_path</span><span class="p">,</span> <span class="n">bitmap_path</span><span class="p">,</span> <span class="n">output_path</span><span class="p">):</span>
+    <span class="n">bitmap</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">bitmap_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">vdi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">vdi_path</span><span class="p">,</span> <span class="s1">&#39;r+b&#39;</span><span class="p">)</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">changed_block_path</span><span class="p">,</span> <span class="s1">&#39;r+b&#39;</span><span class="p">)</span>
+    <span class="n">combined_vdi</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">bitmap_r</span> <span class="o">=</span> <span class="n">bitmap</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">cb_offset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bitmap_r</span><span class="p">)):</span>
+            <span class="n">offset</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">changed_block_size</span>
+            <span class="k">if</span> <span class="n">bitmap_r</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                <span class="n">blocks</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">cb_offset</span><span class="p">)</span>
+                <span class="n">blocks_r</span> <span class="o">=</span> <span class="n">blocks</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">changed_block_size</span><span class="p">)</span>
+                <span class="n">combined_vdi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">blocks_r</span><span class="p">)</span>
+                <span class="n">cb_offset</span> <span class="o">+=</span> <span class="n">changed_block_size</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">vdi</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+                <span class="n">vdi_r</span> <span class="o">=</span> <span class="n">vdi</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">changed_block_size</span><span class="p">)</span>
+                <span class="n">combined_vdi</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">vdi_r</span><span class="p">)</span>
+</pre></div> 
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+    <!--<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span class="prev"><a href="../exporting-changed-blocks/"><i class="fa fa-angle-left"></i> Previous</a></span>
+      
+      
+        <span class="next"><a href="../appendices/">Next <i class="fa fa-angle-right"></i></a></span>
+      
+    </span>
+	<div class="footer-right">
+		<ul class="social-links">
+			<li class="list-inline"><a href="https://twitter.com/citrix"><i class="fa fa-twitter"></i>@citrix</a></li>
+			<li class="list-inline"><a href="mailto:support@citrix.com"><i class="fa fa-envelope-o"></i>support@citrix.com</a></li>
+		</ul>
+		<ul class="inner-pages">
+			<li class="list-inline"><a href="http://citrix.com/about/legal">Privacy and Terms</li>
+		</ul>
+	</div>
+</div>-->
+
+  </body>
+
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <title>Getting Started - Citrix XenServer Changed Block Tracking Guide</title>
+     
+    <link rel="shortcut icon" href="
+https://www.citrix.com/etc/designs/citrix/icon-favicon.png"> 
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link rel="stylesheet" href="../css/override.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" /> 
+    <script>
+      // Current page data
+      var mkdocs_page_name = "Getting Started";
+      var mkdocs_page_input_path = "getting-started.md";
+      var mkdocs_page_url = "/getting-started/";
+
+    </script>
+    
+    <script src="../js/jquery-2.1.1.min.js"></script>
+    <script src="../js/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="../js/highlight.pack.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/custom.js"></script>  
+  </head>
+
+  <body class="wy-body-for-nav" role="document">
+
+    <div class="header-top">
+
+        <div class="header-top-left">
+          <a href="http://developer-docs.citrix.com" class="logo-position"><img height="60" src="../img/citrixlogoblack.png" target="_blank" class="logo-citrix"><span style="color:#000;font-size: 20px;position: relative;top:4px;left:20px;">Developer Documentation</span></a>
+        </div>
+        <div class="header-top-right">
+          <ul>
+
+            <form id="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+             <ul class="header-elements">
+              <li class="list-inline support">
+                <input name="q" id="txtName" type="text" placeholder="Search SDKs" class="searchdocs">
+                <a class="fa fa-search errspan"></a>
+<!---
+              </li>
+             <li> <a href="javascript:void(0);" style="font-size: 22px;position: relative;left: -10px;top: 3px"><i class="fa fa-globe"></i></a></li>
+             </ul>
+             --->
+            </form>
+
+          </ul>
+
+        </div>
+
+    </div>
+    <div class="body">
+      <div class="wy-grid-for-nav">
+
+        
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+          <div class="wy-side-nav-search">
+            <div role="search">
+  <form id ="rtd-search-form-alt" class="wy-form" action="../search.html" method="get">
+	<i class="fa fa-search"></i>
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+          </div>
+
+          <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+            <ul class="current">
+              
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="..">Introduction</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 current">
+        <a class="toctree-l1-a current" href="./">Getting Started</a>
+		
+            <ul style="margin-left: 0px;padding-left:15px;border-left: 1px solid #b2b2b2;">
+            
+                <li class="toctree-l3"><a href="#getting-started-using-changed-block-tracking" style="padding:0px;position: relative;">&nbsp;Getting started using changed block tracking</a></li>
+                
+                    <li><a class="toctree-l4" href="#prerequisites" style="padding:0px;position: relative;">Prerequisites</a></li>
+                
+                    <li><a class="toctree-l4" href="#procedure" style="padding:0px;position: relative;">Procedure</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../enabling-nbd/">Enabling NBD connection</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../using-with-vdi/">Using CBT with a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../deleting-snapshot/">Deleting VDI snapshots</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../list-changed-blocks/">Getting the list of changes blocks in a VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../exporting-changed-blocks/">Exporting changed blocks over NBD</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../coalescing-blocks/">Coalescing changed blocks onto a base VDI</a>
+		
+    </li>
+
+			  
+              
+    <li class="toctree-l1 ">
+        <a class="toctree-l1-a " href="../appendices/">Appendices</a>
+		
+    </li>
+
+			  
+            </ul>
+          </div>
+          &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+           
+          <div class="wy-nav-content">
+            <div class="rst-content">
+              <!-- <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Getting Started</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div> -->
+              <div role="main">
+                <div class="section">
+                <div class="file-format">
+                 <div class="leftAlign" style="float: left;visibility: hidden;">
+                  </div>
+                  <div class="rightAlign" style="float: right;">
+                      <span>Download full document:</span>
+                      <ul class="file-types">
+                        <li><a style="border: 1px solid #EE3D24;padding: 5px;font-size: 11px;color: #EE3D24;border-radius: 5px;font-weight: 700">PDF</a></li>
+                        <li><a style="border: 1px solid #2A579A;padding: 5px;font-size: 11px;color: #2A579A;border-radius: 5px;font-weight: 700">DOCX</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">EMAIL</a></li>
+                        <li><a style="border: 1px solid #495164;padding: 5px;font-size: 11px;color: #495164;border-radius: 5px;font-weight: 700">PRINT</a></li>
+                      </ul>
+                  </div>
+                  </div>
+                   <h1 id="getting-started-using-changed-block-tracking">Getting started using changed block tracking<a class="headerlink" href="#getting-started-using-changed-block-tracking" title="Permanent link">&para;</a></h1>
+<p>This section steps through the process of using changed block tracking to create incremental backups.</p>
+<p>Before getting started with changed block tracking, we recommend that you read the Citrix XenServer Software Developer Kit Guide.
+This document contains information to help you become familiar with developing for XenServer.</p>
+<p>The examples provided in these steps use the Python binding for the Management API.</p>
+<ul>
+<li>
+<p>For more information about the individual RPC calls, see the <a href="https://developer-docs.citrix.com">Citrix XenServer Management API</a></p>
+</li>
+<li>
+<p>For more detailed information about individual steps in this process, see the following chapters.</p>
+</li>
+</ul>
+<p>Full Python examples are provided on <a href="https://github.com/xenserver/xs-cbt-samples">GitHub</a>.</p>
+<p>The NBD connection examples provided in these steps use the Linux nbd-client.
+However, you can use any NBD client that supports the "fixed newstyle" version of the NBD protocol.
+For more information, see <a href="https://sourceforge.net/p/nbd/code/ci/master/tree/doc/proto.md">the NBD protocol documentation</a>.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>If you are using the Linux upstream NBD client, a minimum version of 3.15 is required to support TLS.</p>
+</blockquote>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<p>Before you start, set up or implement an NBD client at the backup location that supports the "fixed newstyle" version of the NBD protocol.
+For more information, see <a href="../exporting-changed-blocks/">Exporting the changed blocks using an NBD client</a>.</p>
+<p>Enable NBD connections on your network.
+For more information, see <a href="./enabling_nbd.md">Enabling NBD connections on XenServer</a>.</p>
+<h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h2>
+<p>This procedure is broken down into three sections:</p>
+<ul>
+<li>
+<p><strong>Setting up changed block tracking</strong>
+    Perform the steps in this section once, when you start using changed
+    block tracking, to enable the changed block tracking capability and
+    export a base snapshot that the incremental, changed block exported
+    data is compared to.</p>
+</li>
+<li>
+<p><strong>Taking incremental backups</strong>
+    Perform the steps in this section every time you want to take an
+    incremental back up of the changed blocks in a VDI.</p>
+</li>
+<li>
+<p><strong>Restoring a VDI from exported changed block data</strong>
+    Perform the steps in this section if you want to use your backed up
+    data to restore a VDI to an earlier state.</p>
+</li>
+</ul>
+<h3 id="setting-up-changed-block-tracking">Setting up changed block tracking<a class="headerlink" href="#setting-up-changed-block-tracking" title="Permanent link">&para;</a></h3>
+<p>Before you can take incremental backups of a VDI using changed block tracking, you must first enable changed block tracking on the VDI and export a base snapshot.
+To set up changed block tracking for a VDI, complete the following steps</p>
+<ol>
+<li>
+<p>Use the Management API to establish a XenAPI session on the
+    XenServer host:</p>
+<p>```python
+import XenAPI
+import shutil
+import urllib3
+import requests</p>
+<p>session = XenAPI.xapi_local()
+session.xenapi.login_with_password("<user>", "<password>", "<version>", "<originator>")
+```</p>
+</li>
+<li>
+<p><strong>Optional</strong>: If you intend to create a new VM and new VDIs to restore your backed up data to, you must also export your VM metadata.
+    Ensure that you export a copy of the VM metadata any time your VM properties change.
+    This can be done by using HTTPS or by using the command line.</p>
+<p>```python
+session_id = session._session
+url = ("https://%s/export_metadata?session_id=%s&amp;uuid=%s"
+        "&amp;export_snapshots=false"
+        % (<xs_host>, session_id, <vm_uuid>))</p>
+<p>with requests.Session() as session:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    request = session.get(url, verify=False, stream=True)
+    with open(<export_path>, 'wb') as filehandle:
+        shutil.copyfileobj(request.raw, filehandle)
+    request.raise_for_status()
+```</p>
+<p>Where &lt;<em>export_path</em>&gt; is the location to save the VM metadata to.</p>
+<p>The export URL includes the parameter <code>export_snapshots=false</code>.
+This parameter ensures that the snapshot history is not included in the VM metadata backup.
+The VM metadata is used to create a new VM and this snapshot history does not apply to the new VM.</p>
+<p>If you intend to use your backed up data only to restore existing VDIs and VMs, you can skip this step.</p>
+</li>
+<li>
+<p>Get a reference for the VDI you want to snapshot:</p>
+<p><code>python
+vdi_ref = session.xenapi.VDI.get_by_uuid("&lt;vdi_uuid&gt;")</code></p>
+</li>
+<li>
+<p>Enable changed block tracking for the VDI:</p>
+<p><code>python
+session.xenapi.VDI.enable_cbt(&lt;vdi_ref&gt;)</code></p>
+<p>For more information, see <a href="../using-with-vdi/">Using changed block tracking with a virtual disk image</a>.</p>
+</li>
+<li>
+<p>Take a snapshot of the VDI:</p>
+<p><code>python
+base_snapshot_vdi_ref = session.xenapi.VDI.snapshot(&lt;vdi_ref&gt;)</code></p>
+<p>This VDI snapshot is the base snapshot.</p>
+</li>
+<li>
+<p>Export the base VDI snapshot to the backup location. This can be done by using HTTPS or by using the command line.</p>
+<p>For example, at the xe command line run:</p>
+<p><code>python
+xe vdi-export uuid=&lt;base-snapshot-vdi-uuid&gt; filename=&lt;name of export&gt;</code></p>
+<p>Or, in Python, you can use the following code:</p>
+<p><code>python
+session_id = session._session
+url = ('https://%s/export_raw_vdi?session_id=%s&amp;vdi=%s&amp;format=raw'
+       % (&lt;xs_host&gt;, session_id, &lt;base_snapshot_vdi_uuid&gt;))
+with requests.Session() as http_session:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    request = http_session.get(url, verify=False, stream=True)
+    with open(&lt;export_path&gt;, 'wb') as filehandle:
+        shutil.copyfileobj(request.raw, filehandle)
+    request.raise_for_status()</code></p>
+<p>Where &lt;<em>export_path</em>&gt; is the location you want to write the exported VDI to.</p>
+</li>
+<li>
+<p>Optional: For each VDI snapshot, delete the snapshot data, but retain the metadata:</p>
+<p><code>python
+session.xenapi.VDI.data_destroy(&lt;base_snapshot_vdi_ref&gt;)</code></p>
+<p>This frees up space on the host or SR.</p>
+<p>For more information, see <a href="./deleting_snapshot.md">Deleting VDI snapshot data and retaining the snapshot metadata</a>.</p>
+</li>
+</ol>
+<h3 id="taking-incremental-backups">Taking incremental backups<a class="headerlink" href="#taking-incremental-backups" title="Permanent link">&para;</a></h3>
+<p>After taking the initial VDI snapshot and exporting all the data, the following steps can be repeated every time an incremental backup is taken of the VDI.
+These incremental backups export only the blocks that have changed since the previous snapshot was taken.</p>
+<p>To take an incremental backup, complete the following steps:</p>
+<ol>
+<li>
+<p>Check that changed block tracking is enabled:</p>
+<p><code>python
+is_cbt_enabled = session.xenapi.VDI.get_cbt_enabled(&lt;vdi_ref&gt;)</code></p>
+<p>If the value of <code>is_cbt_enabled</code> is not <code>true</code>, you must complete the steps in the <em>Setting up changed block tracking</em> section, before taking incremental backups.
+For more information, see <a href="../using-with-vdi/">Incremental backup sets</a>.</p>
+<p>If changed block tracking is disabled and this is unexpected, this state might indicate that the host or SR has crashed since you last took an incremental backup or that a XenServer user has disabled changed block tracking.</p>
+</li>
+<li>
+<p>Take a snapshot of the VDI:</p>
+<p><code>python
+snapshot_vdi_ref = session.xenapi.VDI.snapshot(&lt;vdi_ref&gt;)</code></p>
+</li>
+<li>
+<p>Compare this snapshot to a previous snapshot to find the changed blocks:</p>
+<p><code>python
+bitmap = session.xenapi.VDI.list_changed_blocks(&lt;base_snapshot_vdi_ref&gt;, &lt;snapshot_vdi_ref&gt;)</code></p>
+<p>This call returns a base64-encoded bitmap that indicates which blocks have changed.
+For more information, see <a href="../list-changed-blocks/">Get the list of blocks that changed between VDIs</a>.</p>
+</li>
+<li>
+<p>Get details for a list of connections that can be used to use to access the VDI snapshot over the NBD protocol.</p>
+<p><code>python
+connections = session.xenapi.VDI.get_nbd_info(&lt;snapshot_vdi_ref&gt;)</code></p>
+<p>This call returns a list of connection details that are specific to this session.
+Each set of connection details in the list contains a dictionary of the parameters required for an NBD client connection.
+For more information, see <a href="./export-changed-blocks.md">Getting NBD connection information for a VDI</a>.</p>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>Ensure that this session with the host remains logged in until after you have finished reading from the network block device.</p>
+</blockquote>
+</li>
+<li>
+<p>From your NBD client, complete the following steps to export the changed blocks to the backup location.
+    For example, when using the Linux <code>nbd-client</code>:</p>
+<ol>
+<li>
+<p>Connect to the NBD server.</p>
+<p><code>python
+nbd-client &lt;address&gt; &lt;port&gt; -N &lt;exportname&gt; -cacertfile &lt;cacert&gt;
+      -tlshostname &lt;subject&gt;</code></p>
+<ul>
+<li>
+<p>The &lt;<em>address</em>&gt;, &lt;<em>port</em>&gt;, &lt;<em>exportname</em>&gt;, and &lt;<em>subject</em>&gt; values passed as parameters to the connection command are the values returned by the <code>get_nbd_info</code> call.</p>
+</li>
+<li>
+<p>The &lt;<em>cacert</em>&gt; is a file containing one or more trusted Certificate Authority certificates of which at least one has signed the NBD server's TLS certificate.
+   That TLS certificate is included in the values returned by the <code>get_nbd_info</code> call.
+   If the TLS certificate returned by the <code>get_nbd_info</code> call is self-signed, it can be used as the value of <code>cacert</code> here to authenticate itself.</p>
+</li>
+</ul>
+<p>For more information about using these values, see <a href="../exporting-changed-blocks/">Getting NBD connection information for a VDI</a>.</p>
+</li>
+<li>
+<p>Read off the blocks that are marked as changed in the bitmap returned from step 3.</p>
+</li>
+<li>
+<p>Disconnect from the block device:</p>
+<p><code>python
+nbd-client -d &lt;block_device&gt;</code></p>
+</li>
+<li>
+<p>Optional: We recommend that you retain the bitmap associated with each changed block export at your backup location.</p>
+</li>
+</ol>
+<p>To complete the preceding steps, you can use any NBD client implementation that supports the “fixed newstyle” version of the NBD protocol.
+For more information, see <a href="../exporting-changed-blocks/">Exporting the changed blocks using an NBD client</a>.</p>
+</li>
+<li>
+<p>Optional: On the host, delete the VDI snapshot, but retain the metadata:</p>
+<p><code>python
+session.xenapi.vdi.data_destroy(&lt;snapshot_vdi_ref&gt;)</code></p>
+<p>This frees up space on the host or SR.</p>
+<p>For more information, see <a href="./deleting-snapshos.md">Deleting VDI snapshot data and retaining the snapshot metadata</a>.</p>
+</li>
+</ol>
+<h3 id="restoring-a-vdi-from-exported-changed-block-data">Restoring a VDI from exported changed block data<a class="headerlink" href="#restoring-a-vdi-from-exported-changed-block-data" title="Permanent link">&para;</a></h3>
+<p>When you want to use your incremental backups to restore or import data from a VDI, you cannot use individual exports of changed blocks to do this.
+You must first coalesce the exported changed blocks onto a base snapshot.
+Use this coalesced VDI to restore or import backed up data.</p>
+<ol>
+<li>
+<p>Create a coalesced VDI.</p>
+<p>For each set of exported changed blocks between the base snapshot and the snapshot you want to restore to, create a coalesced VDI from a previous base VDI and the subsequent set of exported changed blocks.
+Ensure that you apply sets of the changed blocks to the base VDI in the order that they were snapshotted.</p>
+<p>To create a coalesced VDI from a base VDI and the subsequent set of exported changed blocks, complete the following steps:</p>
+<ol>
+<li>
+<p>Get the bitmap that was used in step 3 to derive this set of exported changed blocks.</p>
+</li>
+<li>
+<p>For each block in the VDI:</p>
+<ul>
+<li>
+<p>If the bitmap indicates that the block has changed, read the block data from the set of exported changed blocks and append that data to the coalesced VDI.</p>
+</li>
+<li>
+<p>If the bitmap indicates that the block has not changed, read the block data from the base VDI and append that data to the coalesced VDI.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Use the coalesced VDI as the base VDI for the next iteration of this step.
+    Or, if you have reached the target snapshot level, use this coalesced VDI in the next step to restore a VDI in XenServer.</p>
+</li>
+</ol>
+<p>For more information, see <a href="../coalescing-blocks/">Coalescing changed blocks onto a base VDI</a>.</p>
+<p>You can now use this coalesced VDI to either import backed up data into a new VDI or to restore an existing VDI.</p>
+</li>
+<li>
+<p>Optional: Create a new VM and new VDI.</p>
+<p>You can create a new VM and new VDI to import the coalesced VDI into.
+However, if you intend to use the coalesced VDI to restore an existing VDI, you can skip this step.</p>
+<p>To create a new VM and new VDI, complete the following steps</p>
+<ol>
+<li>
+<p>Create a new VDI:</p>
+<p><code>python
+vdi_record = {
+     "SR": &lt;sr&gt;,
+     "virtual_size": &lt;size&gt;,
+     "type": "user",
+     "sharable": False,
+     "read_only": False,
+     "other_config": {},
+     "name_label": "&lt;name_label&gt;"
+ }
+ vdi_ref = session.xenapi.VDI.create(vdi_record)
+ vdi_uuid = session.xenapi.VDI.get_uuid(vdi_ref)</code></p>
+<p>Where &lt;<em>sr</em>&gt; is a reference to the SR that the original VDI was located on and &lt;<em>size</em>&gt; is the size of the original VDI.</p>
+</li>
+<li>
+<p>To create a new VM that uses the VDI created in the previous step, import the VM metadata associated with the snapshot level you are using to restore the VDI:</p>
+<p>```python
+vdi_string = "&amp;vdi:%s=%s" % (<original_vdi_uuid>, <new_vdi_uuid>)</p>
+<p>task_ref = session.xenapi.task.create("import_vm", "Task to track vm import")</p>
+<p>url = ('https://%s/import_metadata?session_id=%s&amp;task_id=%s%s'
+       % (host, session._session, task_ref, vdi_string))</p>
+<p>with open(<vm_import_path>, 'r') as filehandle:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    with requests.Session() as http_session:
+        request = http_session.put(url, filehandle, verify=False)
+        request.raise_for_status()
+```</p>
+<p>Where &lt;<em>vm_import_path</em>&gt; is the location of the VM metadata.</p>
+<p>The <code>vdi:</code> query parameter changes the VM from pointing to its original VDI to pointing to the new VDI created in the previous step.
+You might want to create multiple new VDIs.
+If you want to change multiple VDI references for your new VM, add a <code>vdi:</code> query parameter for each VDI to the import URL.</p>
+<p>The new VM is created from the imported metadata and its VDI reference is updated to point at the VDI created in the previous step.
+You can extract a reference to this new VM from the result of the task.
+For more information, see the <a href="https://github.com/xenserver/xs-cbt-samples/blob/master/cbt_vm_metadata_import.py">samples on GitHub</a>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Import the coalesced VDI snapshot to the XenServer host at the UUID of the VDI you want to replace with the restored version.
+    This VDI can be either an existing VDI or the VDI created in the previous step.</p>
+<p>In Python, you can use the following code:</p>
+<p><code>python
+session_id = session._session
+url = ('https://%s/import_raw_vdi?session_id=%s&amp;vdi=%s&amp;format=%s'
+       % (&lt;xs_host&gt;, session_id, &lt;vdi_uuid&gt;, 'raw'))
+with open(&lt;import_path&gt;, 'r') as filehandle:
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    with requests.Session() as http_session:
+        request = http_session.put(url, filehandle, verify=False)
+        request.raise_for_status()</code></p>
+<p>Where &lt;<em>vdi_uuid</em>&gt; is the UUID of the VDI you want to overwrite with the restored data from the coalesced VDI and &lt;<em>import_path</em>&gt; is the location of the coalesced VDI.</p>
+</li>
+</ol> 
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </div>
+    <!--<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span class="prev"><a href=".."><i class="fa fa-angle-left"></i> Previous</a></span>
+      
+      
+        <span class="next"><a href="../enabling-nbd/">Next <i class="fa fa-angle-right"></i></a></span>
+      
+    </span>
+	<div class="footer-right">
+		<ul class="social-links">
+			<li class="list-inline"><a href="https://twitter.com/citrix"><i class="fa fa-twitter"></i>@citrix</a></li>
+			<li class="list-inline"><a href="mailto:support@citrix.com"><i class="fa fa-envelope-o"></i>support@citrix.com</a></li>
+		</ul>
+		<ul class="inner-pages">
+			<li class="list-inline"><a href="http://citrix.com/about/legal">Privacy and Terms</li>
+		</ul>
+	</div>
+</div>-->
+
+  </body>
+
+</html>
